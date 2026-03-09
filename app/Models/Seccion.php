@@ -103,7 +103,12 @@ class Seccion extends Model
 
     public function esPermiso(): bool
     {
-        return $this->fk_seccion_id > 0;
+        return empty($this->seccion_uri);
+    }
+
+    public function esSeccion(): bool
+    {
+        return !empty($this->seccion_uri);
     }
 
     public function scopePorSistema($query, int $sistemaId)
